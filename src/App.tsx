@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { ArrowDownLeft, ArrowRight, ArrowUpRight, Bell, Check, ChevronDown, ChevronRight, CircleHelp, ClipboardList, Clock3, FileText, LayoutDashboard, Leaf, Menu, Plus, Settings, ShieldCheck, SlidersHorizontal, Sparkles, Sprout, Users, Wheat } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import AuthPage from './AuthPage'
+import { routeUrl } from './routeUrl'
 import RankingPage from './RankingPage'
 import ComparisonPage from './ComparisonPage'
 import { OffersPage } from './OfferPages'
@@ -41,7 +42,7 @@ export default function App() {
   const route = resolveRoute(path, user)
   useEffect(() => {
     if (readPath() !== route || !window.location.hash) {
-      window.history.replaceState(null, '', `/#${route}`)
+      window.history.replaceState(null, '', routeUrl(import.meta.env.BASE_URL, route))
       setPath(route)
     }
   }, [route, path])

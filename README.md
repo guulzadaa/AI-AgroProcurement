@@ -114,3 +114,15 @@ Browser QA covers both-role registration/login, request and offer forms, first-e
 ## Structure
 
 `src/App.tsx`: shell and hash navigation. `auth.ts`, `procurement.ts`, `offers.ts`, `comparison.ts`, `ranking.ts`: data/calculation logic. Page components render each workflow. `styles.css`: Tailwind entry and agritech design. `tests/`: automated suites.
+
+## GitHub Pages deployment
+
+Production base: `/AI-AgroProcurement/`; development base remains `/`.
+Site URL: https://guulzadaa.github.io/AI-AgroProcurement/
+Hash routes remain below the repository path, including authentication redirects, for example `/AI-AgroProcurement/#/buyer/ranking/demo-npk`.
+
+In GitHub repository **Settings > Pages > Build and deployment**, select **GitHub Actions** as Source. The committed `.github/workflows/deploy.yml` runs on every push to main, or manually via **Actions > Deploy GitHub Pages > Run workflow**. It installs with npm ci on Node 24, runs all tests, builds dist, uploads the Pages artifact, and deploys using official Pages actions with pages/write and OIDC permissions scoped to the deployment job. No gh-pages branch or committed dist folder is needed.
+
+If the initial run fails because Pages is not enabled, select GitHub Actions in Settings > Pages, then rerun the failed workflow or launch Run workflow on main. Local preview of the production build uses http://localhost:4173/AI-AgroProcurement/ after npm run build and npm run preview. Local dev stays at http://localhost:5173/.
+
+Hosted localStorage is separate from localhost. Log in with demo accounts on the deployed site; local test users and submissions are not uploaded to GitHub. No custom domain or secret token is required for this workflow.
