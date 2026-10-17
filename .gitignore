@@ -1,0 +1,44 @@
+node_modules/
+dist/
+*.local
+.DS_Store
+
+# Environment variables and local credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+.aws/
+.ssh/
+.secrets/
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+credentials.*.json
+
+# Build caches, logs, test reports and temporary files
+*.tsbuildinfo
+.vite/
+.cache/
+coverage/
+playwright-report/
+test-results/
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+tmp/
+temp/
+Thumbs.db
+
+# Local editor and agent configuration
+.idea/
+.vscode/
+.codex/
+.agents/
